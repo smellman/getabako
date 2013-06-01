@@ -33,4 +33,22 @@ class AccountController < ApplicationController
     reset_session
     redirect_to :action => :login
   end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(:name => params[:user][:name],
+                     :password => params[:user][:password],
+                     :password_confirmation => params[:user][:password_confirmation])
+    unless @user.save
+      flash[:error] = @user.errors.full_messages
+      redirect_to :action => :new
+      return
+    end
+    session[:user] = @user
+    redirect_to :controller => :home, :action => :index
+    return
+  end
 end

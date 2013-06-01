@@ -4,6 +4,8 @@ Getabako::Application.routes.draw do
   get "account/login"
   post "account/login"
   get "account/logout"
+  get "account/new"
+  post "account/create"
 
   resources :questions do
   end

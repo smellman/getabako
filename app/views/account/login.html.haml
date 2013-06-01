@@ -1,5 +1,8 @@
 %section
   = form_for :login, :url => url_for(:controller => :account, :action => :login), :method => :post do |f|
+    - if flash[:error]
+      %p
+        = flash[:error]
     %p
       = f.label "ユーザ名"
       = f.text_field :name
@@ -8,3 +11,5 @@
       = f.password_field :password
     %p
       = f.submit
+    %p
+      = link_to "ユーザ作成", {:controller => :account, :action => :new}, {"data-role" => "button"}

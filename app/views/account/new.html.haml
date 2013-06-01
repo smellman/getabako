@@ -1,0 +1,16 @@
+%section
+  = form_for :user, :url => url_for(:controller => :account, :action => :create), :method => :post do |f|
+    - if flash[:error]
+      %p
+        = flash[:error]
+    %p
+      = f.label "ユーザ名"
+      = f.text_field :name
+    %p
+      = f.label "パスワード"
+      = f.password_field :password
+    %p
+      = f.label "パスワード"
+      = f.password_field :password_confirmation
+    %p
+      = f.submit
