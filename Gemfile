@@ -37,4 +37,5 @@ gem 'capistrano'
 # To use debugger
 # gem 'debugger'
 
-gem 'haml-rails', '>= 0.3.4', :group => :development
+gem 'haml'
+gem 'haml-rails', '>= 0.3.4'
