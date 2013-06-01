@@ -47,6 +47,8 @@ before 'deploy:assets:precompile' do
   run "cp /usr/local/apps/getabako_config/database.yml #{release_path}/config/database.yml"
 end
 
+after 'deploy:create_symlink', 'deploy:migrate'
+
 namespace :deploy do
   task :start, :except => { :no_release => true } do
     run "cd #{current_path} ; BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c config/unicorn.rb -D"
