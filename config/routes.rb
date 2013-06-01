@@ -4,6 +4,9 @@ Getabako::Application.routes.draw do
   get "account/login"
   post "account/login"
   get "account/logout"
+
+  resources :questions do
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,14 @@
+%p 
+  = f.label :title
+  = f.text_field :title
+%p
+  = f.label :matter
+  = f.text_area :matter
+%p
+  = f.label :level
+  = f.text_field :level
+%p
+  = f.label :subject
+  = f.select :subject, @subjects
+%p
+  = f.submit
