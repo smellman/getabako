@@ -1,0 +1,10 @@
+%section
+  = form_for :login, :url => url_for(:controller => :account, :action => :login), :method => :post do |f|
+    %p
+      = f.label "ユーザ名"
+      = f.text_field :name
+    %p
+      = f.label "パスワード"
+      = f.text_field :password
+    %p
+      = f.submit
