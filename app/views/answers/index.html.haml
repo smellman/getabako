@@ -14,13 +14,18 @@
       %li
         = link_to a.question.title, {:action => :show_answer, :id => a.id}
   %h2 自分が出した問題
-  %ul
-    - @question_not_corrected.each do |q|
-      %li
-        = q.title
-        %ul
-          %li
-            = q.answers.not_corrected.count
-          - q.answers.not_corrected.each do |a|
-            %li
-              = link_to "#{a.user.name} への回答", {:action => :correction, :id => a.id}
+  %ul(data-role='listview')
+    %li(data-role='list-divider' data-theme="b") 添削前の問題
+    - @questions_not_corrected.each do |q|
+      %li(data-role='list-divider' data-theme="f")
+        = "問題: #{q.title}"
+      - q.answers.not_corrected.each do |a|
+        %li
+          = link_to "#{a.user.name} さんへの回答", {:action => :correction, :id => a.id}
+    %li(data-role='list-divider' data-theme="d") 添削後の問題
+    - @questions_completed.each do |q|
+      %li(data-role='list-divider' data-theme="f")
+        = "問題: #{q.title}"
+      - q.answers.completed.each do |a|
+        %li
+          = "#{a.user.name} さんへの回答"

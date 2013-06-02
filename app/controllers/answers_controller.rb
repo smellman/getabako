@@ -4,7 +4,8 @@ class AnswersController < ApplicationController
     @answers_not_answered = session[:user].answers.not_answered
     @answers_not_corrected = session[:user].answers.not_corrected
     @answers_completed = session[:user].answers.completed
-    @question_not_corrected = session[:user].questions.not_corrected
+    @questions_not_corrected = session[:user].questions.not_corrected
+    @questions_completed = session[:user].questions.completed
   end
 
   def answer
