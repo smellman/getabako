@@ -39,3 +39,5 @@ gem 'capistrano'
 
 gem 'haml'
 gem 'haml-rails', '>= 0.3.4'
+
+gem 'jquery_mobile_rails'
