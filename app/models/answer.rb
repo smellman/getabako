@@ -4,6 +4,7 @@ class Answer < ActiveRecord::Base
   attr_accessible :question, :user, :body, :correction
   belongs_to :question
   belongs_to :user
+  has_one :peer_review
 
   scope :not_answered, where(:answered_time => nil)
   scope :not_corrected, where(Answer.arel_table[:answered_time].not_eq(nil)).where(:corrected_time => nil)

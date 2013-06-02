@@ -1,0 +1,11 @@
+%section
+  %h1 ピアレビュー
+  %ul(data-role="listview")
+    %li(data-role='list-divider' data-theme="b") ピアレビュー依頼
+    - @peer_reviews_not_replyed.each do |peer|
+      %li
+        = link_to "#{peer.answer.user.name} さんからの申し込み: #{peer.answer.question.title}", {:action => :show, :id => peer.id}
+    %li(data-role='list-divider' data-theme="d") ピアレビュー回答済
+    - @peer_reviews_replyed.each do |peer|
+      %li
+        = link_to "#{peer.answer.user.name} さんからの申し込み: #{peer.answer.question.title}", {:action => :show, :id => peer.id}

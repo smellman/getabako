@@ -15,10 +15,18 @@ Getabako::Application.routes.draw do
       post 'answer'
       post 'post_answer'
       get 'show_correction'
+      post 'show_correction'
       get 'show_answer'
       get 'correction'
       post 'correction'
       post 'post_correction'
+      post 'peer_review'
+    end
+  end
+
+  resources :peer_reviews do
+    collection do
+      post 'reply'
     end
   end
 

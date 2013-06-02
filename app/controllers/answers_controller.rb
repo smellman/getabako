@@ -26,6 +26,7 @@ class AnswersController < ApplicationController
   
   def show_correction
     @answer = Answer.find(params[:id])
+    @peer_review = PeerReview.new
   end
 
   def show_answer
@@ -43,6 +44,24 @@ class AnswersController < ApplicationController
       flash[:error] = "保存に失敗しました"
       logger.debug @answer.errors.full_messages
       render :action => :correction
+      return
+    end
+    redirect_to :action => :index
+    return
+  end
+
+  def peer_review
+    logger.debug "test"
+    logger.debug params
+    @answer = Answer.find(params[:answer][:id])
+    @peer_review = PeerReview.new
+    @peer_review.answer = @answer
+    @peer_review.user = @answer.question.user
+    @peer_review.question_body = params[:question_body]
+    unless @peer_review.save
+      flash[:error] = "保存に失敗しました"
+      logger.debug @answer.errors.full_messages
+      render :action => :show_correction
       return
     end
     redirect_to :action => :index

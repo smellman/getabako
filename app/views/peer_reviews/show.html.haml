@@ -1,0 +1,30 @@
+%section
+  %h1 ピアレビューに回答
+  %h2
+    = @peer_review.answer.question.title
+  %p
+    = @peer_review.answer.question.matter
+  %h2 回答
+  %p
+    = @peer_review.answer.body
+  %h2 添削
+  %p
+    = @peer_review.answer.correction
+  %h2 ピアレビュー依頼
+  %p
+    = @peer_review.question_body
+  - if @peer_review.replyed?
+    %h2 回答内容
+    %p
+      = @peer_review.reply
+  - else
+    %h2 ピアレビューに回答
+    = form_for :peer_review, :url => {:action => :reply}, :html => {:method => :post} do |f|
+      = f.hidden_field :id, :value => @peer_review.id
+      %p
+        = f.label "回答内容"
+        = f.text_area :reply
+      %p
+        = f.submit
+
+  

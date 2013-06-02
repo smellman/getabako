@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   validates :password_digest, :presence => true
   has_many :answers
   has_many :questions
+  has_many :peer_reviews
 end

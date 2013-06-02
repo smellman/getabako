@@ -1,0 +1,20 @@
+%section
+  %h1 回答
+  %h2
+    = @answer.question.title
+  %p
+    = @answer.question.matter
+  %h2 回答
+  %p
+    = @answer.body
+  %h2 添削
+  %p
+    = @answer.correction
+  %h1 ピアレビューを送る
+  = form_for :answer, :url => {:controller => :answers, :action => :peer_review}, :html => {:method => :post} do |f|
+    = f.hidden_field :id, :value => @answer.id
+    %p
+      = f.label "聞きたいこと！"
+      = text_area :question_body, ''
+    %p
+      = f.submit
