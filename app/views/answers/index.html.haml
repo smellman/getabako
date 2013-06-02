@@ -1,15 +1,15 @@
 %section
   %h2 来た回答
   %ul(data-role='listview')
-    %li(data-role='list-divider') まだ答えてない項目
+    %li(data-role='list-divider' data-theme="b") まだ答えてない項目
     - @answers_not_answered.each do |a|
       %li
         = link_to a.question.title, {:action => :answer, :id => a.id}
-    %li(data-role='list-divider') 添削済み項目
+    %li(data-role='list-divider' data-theme="d") 添削済み項目
     - @answers_completed.each do |a|
       %li
         = link_to a.question.title, {:action => :show_correction, :id => a.id}
-    %li(data-role='list-divider') 添削前項目
+    %li(data-role='list-divider' data-theme="f") 添削前項目
     - @answers_not_corrected.each do |a|
       %li
         = link_to a.question.title, {:action => :show_answer, :id => a.id}
