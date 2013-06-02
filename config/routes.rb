@@ -9,6 +9,19 @@ Getabako::Application.routes.draw do
 
   resources :questions do
   end
+  resources :answers do
+    collection do
+      get 'answer'
+      post 'answer'
+      post 'post_answer'
+      get 'show_correction'
+      get 'show_answer'
+      get 'correction'
+      post 'correction'
+      post 'post_correction'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

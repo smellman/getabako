@@ -6,7 +6,7 @@ class Answer < ActiveRecord::Base
   belongs_to :user
 
   scope :not_answered, where(:answered_time => nil)
-  scope :not_corrected, where(:corrected_time => nil)
+  scope :not_corrected, where(Answer.arel_table[:answered_time].not_eq(nil)).where(:corrected_time => nil)
   scope :completed, where(Answer.arel_table[:answered_time].not_eq(nil)).where(Answer.arel_table[:corrected_time].not_eq(nil))
 
   def answered?

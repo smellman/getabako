@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
       render :action => :new
       return
     end
+    @question.create_answers
     flash[:notice] = "質問を作成しました"
     redirect_to :action => :index
   end

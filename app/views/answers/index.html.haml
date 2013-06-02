@@ -1,0 +1,26 @@
+%section
+  %h2 来た回答
+  %ul
+    %li まだ答えてない項目
+    - @answers_not_answered.each do |a|
+      %li
+        = link_to a.question.title, {:action => :answer, :id => a.id}
+    %li 添削済み項目
+    - @answers_completed.each do |a|
+      %li
+        = link_to a.question.title, {:action => :show_correction, :id => a.id}
+    %li 添削前項目
+    - @answers_not_corrected.each do |a|
+      %li
+        = link_to a.question.title, {:action => :show_answer, :id => a.id}
+  %h2 自分が出した問題
+  %ul
+    - @question_not_corrected.each do |q|
+      %li
+        = q.title
+        %ul
+          %li
+            = q.answers.not_corrected.count
+          - q.answers.not_corrected.each do |a|
+            %li
+              = link_to "#{a.user.name} への回答", {:action => :correction, :id => a.id}

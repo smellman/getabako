@@ -1,0 +1,12 @@
+%section
+  %h1 質問に答えましょう！
+  %h2 質問内容
+  %p
+    = @answer.question.matter
+  = form_for :answer, :url => {:action => :post_answer}, :html => {:method => :post} do |f|
+    = f.hidden_field :id, :value => @answer.id
+    %p
+      = f.label "回答"
+      = f.text_area :body
+    %p
+      = f.submit "投稿！"

@@ -1,0 +1,15 @@
+%section
+  %h1 回答が来ました。添削しましょう！
+  %h2 質問内容
+  %p
+    = @answer.question.matter
+  %h2 回答内容
+  %p
+    = @answer.body
+  = form_for :answer, :url => {:action => :post_correction}, :html => {:method => :post} do |f|
+    = f.hidden_field :id, :value => @answer.id
+    %p
+      = f.label "添削"
+      = f.text_area :correction
+    %p
+      = f.submit "投稿！"
